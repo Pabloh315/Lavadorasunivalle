@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'QuikWash' }}</title>
+    <title>{{ $title ?? 'QuickWash Campus' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
@@ -14,7 +14,7 @@
                     <a href="{{ auth()->user()->isLaundryStaff() ? route('staff.dashboard') : route('student.dashboard') }}" class="flex items-center gap-3">
                         <span class="grid h-10 w-10 place-items-center rounded-lg bg-cyan-600 text-sm font-black text-white">QW</span>
                         <span>
-                            <span class="block text-lg font-bold leading-5">QuikWash</span>
+                            <span class="block text-lg font-bold leading-5">QuickWash Campus</span>
                             <span class="block text-xs text-slate-500">Lava fácil. Reserva rápido.</span>
                         </span>
                     </a>

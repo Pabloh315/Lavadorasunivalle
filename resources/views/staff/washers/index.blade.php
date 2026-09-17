@@ -1,4 +1,4 @@
-<x-app-layout title="Lavadoras - QuikWash">
+<x-app-layout title="Lavadoras - QuickWash Campus">
     <h1 class="mb-6 text-2xl font-bold">Lavadoras</h1>
     <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         @foreach($washers as $washer)

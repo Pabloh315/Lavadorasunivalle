@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('washing_machine_id')->constrained('washing_machines')->cascadeOnDelete();
             $table->date('reservation_date');
             $table->string('reservation_time', 5);
-            $table->decimal('weight_kg', 5, 2);
+            $table->unsignedSmallInteger('garments_count');
             $table->string('status')->default('pending');
             $table->text('notes')->nullable();
             $table->timestamp('cancelled_at')->nullable();

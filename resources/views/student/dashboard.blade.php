@@ -1,4 +1,4 @@
-<x-app-layout title="Dashboard estudiante - QuikWash">
+<x-app-layout title="Dashboard estudiante - QuickWash Campus">
     <div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div><h1 class="text-3xl font-black">Hola, {{ auth()->user()->name }}</h1><p class="text-slate-600">Gestiona tus reservas de lavanderia universitaria.</p></div>
         <a class="btn-primary" href="{{ route('student.reservations.create') }}">Nueva reserva</a>

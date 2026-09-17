@@ -1,4 +1,4 @@
-<x-app-layout title="Estudiantes - QuikWash">
+<x-app-layout title="Estudiantes - QuickWash Campus">
     <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div><h1 class="text-2xl font-bold">Estudiantes</h1><p class="text-sm text-slate-600">Busca por nombre, codigo, correo o sede.</p></div>
         <form class="flex gap-2" method="GET" action="{{ route('staff.students.index') }}"><input class="input" name="q" value="{{ request('q') }}" placeholder="Buscar"><button class="btn-secondary">Buscar</button></form>

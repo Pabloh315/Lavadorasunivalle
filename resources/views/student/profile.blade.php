@@ -1,4 +1,4 @@
-<x-app-layout title="Perfil - QuikWash">
+<x-app-layout title="Perfil - QuickWash Campus">
     <section class="max-w-2xl rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
         <h1 class="text-2xl font-bold">Perfil</h1>
         <dl class="mt-6 grid gap-4 sm:grid-cols-2">

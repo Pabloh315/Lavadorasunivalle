@@ -14,7 +14,7 @@ class ReservationPolicy
 
     public function cancel(User $user, Reservation $reservation): bool
     {
-        if ($reservation->status === 'completed' || $reservation->status === 'cancelled') {
+        if ($reservation->status !== 'pending' || $reservation->isPastSlot()) {
             return false;
         }
 
@@ -22,6 +22,6 @@ class ReservationPolicy
             return true;
         }
 
-        return $reservation->user_id === $user->id && $reservation->status === 'pending';
+        return $reservation->user_id === $user->id;
     }
 }

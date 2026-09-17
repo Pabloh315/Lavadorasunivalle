@@ -46,11 +46,11 @@ class DatabaseSeeder extends Seeder
         ]));
 
         $examples = [
-            ['student' => 0, 'washer' => 0, 'days' => 1, 'time' => '08:00', 'kg' => 4.5, 'status' => 'pending', 'notes' => 'Ropa deportiva'],
-            ['student' => 1, 'washer' => 1, 'days' => 1, 'time' => '09:00', 'kg' => 6.0, 'status' => 'in_progress', 'notes' => 'Separar ropa clara'],
-            ['student' => 2, 'washer' => 2, 'days' => 2, 'time' => '10:00', 'kg' => 3.2, 'status' => 'pending', 'notes' => null],
-            ['student' => 3, 'washer' => 3, 'days' => -1, 'time' => '11:00', 'kg' => 8.0, 'status' => 'completed', 'notes' => 'Entregado'],
-            ['student' => 4, 'washer' => 4, 'days' => 3, 'time' => '12:00', 'kg' => 5.0, 'status' => 'cancelled', 'notes' => 'Cancelada por estudiante'],
+            ['student' => 0, 'washer' => 0, 'days' => 1, 'time' => '08:00', 'garments' => 8, 'status' => 'pending', 'notes' => 'Prendas deportivas'],
+            ['student' => 1, 'washer' => 1, 'days' => 1, 'time' => '09:00', 'garments' => 12, 'status' => 'in_progress', 'notes' => 'Separar ropa clara'],
+            ['student' => 2, 'washer' => 2, 'days' => 2, 'time' => '10:00', 'garments' => 6, 'status' => 'pending', 'notes' => null],
+            ['student' => 3, 'washer' => 3, 'days' => -1, 'time' => '11:00', 'garments' => 15, 'status' => 'completed', 'notes' => 'Entregado'],
+            ['student' => 4, 'washer' => 4, 'days' => 3, 'time' => '12:00', 'garments' => 9, 'status' => 'cancelled', 'notes' => 'Cancelada por estudiante'],
         ];
 
         foreach ($examples as $example) {
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
                 'washing_machine_id' => $washers[$example['washer']]->id,
                 'reservation_date' => now()->addDays($example['days'])->toDateString(),
                 'reservation_time' => $example['time'],
-                'weight_kg' => $example['kg'],
+                'garments_count' => $example['garments'],
                 'status' => $example['status'],
                 'notes' => $example['notes'],
                 'cancelled_at' => $example['status'] === 'cancelled' ? now() : null,

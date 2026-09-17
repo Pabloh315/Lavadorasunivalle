@@ -1,6 +1,6 @@
-﻿# QuikWash
+# QuickWash Campus
 
-QuikWash es una aplicacion web universitaria para administrar reservas de lavanderia para estudiantes.
+QuickWash Campus es una aplicacion web universitaria para administrar reservas de lavanderia para estudiantes.
 
 **Eslogan:** Lava fácil. Reserva rápido.
 
@@ -36,7 +36,7 @@ El archivo `.env` no debe subirse al repositorio. Usa `.env.example` como refere
 Configuracion de desarrollo esperada:
 
 ```env
-APP_NAME=QuikWash
+APP_NAME="QuickWash Campus"
 APP_ENV=local
 APP_DEBUG=true
 DB_CONNECTION=sqlite
@@ -122,9 +122,9 @@ Las credenciales son ficticias y solo sirven para demostracion academica.
 - Una lavadora no puede tener dos reservas activas en la misma fecha y hora.
 - Una reserva cancelada libera el horario.
 - No se permiten fechas pasadas ni horas pasadas para reservas de hoy.
-- El peso debe ser mayor a 0 kg.
+- La cantidad de prendas debe ser mayor a 0.
 - Una reserva nueva comienza como `pending`.
-- El estudiante solo puede cancelar reservas `pending` propias.
+- El estudiante solo puede cancelar reservas `pending` propias antes de que el horario comience.
 - El estudiante no puede ver ni modificar reservas de otros estudiantes.
 - El personal puede cambiar `pending -> in_progress` e `in_progress -> completed`.
 - El personal puede cancelar reservas pendientes o en proceso.

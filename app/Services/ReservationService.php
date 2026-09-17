@@ -20,7 +20,7 @@ class ReservationService
             'washing_machine_id' => $washer->id,
             'reservation_date' => $data['reservation_date'],
             'reservation_time' => $data['reservation_time'],
-            'weight_kg' => $data['weight_kg'],
+            'garments_count' => $data['garments_count'],
             'notes' => $data['notes'] ?? null,
             'status' => 'pending',
         ]);
@@ -62,7 +62,7 @@ class ReservationService
 
     public function cancel(Reservation $reservation): Reservation
     {
-        if ($reservation->status === 'completed' || $reservation->status === 'cancelled') {
+        if ($reservation->status !== 'pending' || $reservation->isPastSlot()) {
             throw ValidationException::withMessages(['status' => 'Esta reserva ya no se puede cancelar.']);
         }
 

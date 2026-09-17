@@ -19,7 +19,7 @@ class ReservationFactory extends Factory
             'washing_machine_id' => Washer::factory(),
             'reservation_date' => now()->addDays(fake()->numberBetween(1, 8))->toDateString(),
             'reservation_time' => fake()->randomElement(Reservation::HOURS),
-            'weight_kg' => fake()->randomFloat(1, 2, 12),
+            'garments_count' => fake()->numberBetween(3, 30),
             'notes' => null,
             'status' => 'pending',
             'cancelled_at' => null,

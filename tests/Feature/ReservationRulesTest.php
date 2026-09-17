@@ -27,7 +27,7 @@ class ReservationRulesTest extends TestCase
             'washing_machine_id' => $washer->id,
             'reservation_date' => now()->addDay()->toDateString(),
             'reservation_time' => '08:00',
-            'weight_kg' => 5,
+            'garments_count' => 5,
         ]);
     }
 
@@ -42,7 +42,7 @@ class ReservationRulesTest extends TestCase
             'washing_machine_id' => $washer->id,
             'reservation_date' => now()->addDay()->toDateString(),
             'reservation_time' => '08:00',
-            'weight_kg' => 5,
+            'garments_count' => 5,
         ]);
 
         $this->assertSame('pending', $reservation->status);
@@ -69,7 +69,7 @@ class ReservationRulesTest extends TestCase
             'washing_machine_id' => $washer->id,
             'reservation_date' => $date,
             'reservation_time' => '09:00',
-            'weight_kg' => 4,
+            'garments_count' => 4,
         ]);
     }
 
@@ -90,7 +90,7 @@ class ReservationRulesTest extends TestCase
             'washing_machine_id' => $washer->id,
             'reservation_date' => $date,
             'reservation_time' => '10:00',
-            'weight_kg' => 4,
+            'garments_count' => 4,
         ]);
 
         $this->assertSame('pending', $reservation->status);
@@ -117,7 +117,7 @@ class ReservationRulesTest extends TestCase
             'washing_machine_id' => $washer->id,
             'reservation_date' => now()->subDay()->toDateString(),
             'reservation_time' => '12:00',
-            'weight_kg' => 5,
+            'garments_count' => 5,
         ]);
     }
 
@@ -134,14 +134,14 @@ class ReservationRulesTest extends TestCase
                 'washing_machine_id' => $washer->id,
                 'reservation_date' => '2026-09-14',
                 'reservation_time' => '10:00',
-                'weight_kg' => 5,
+                'garments_count' => 5,
             ]);
         } finally {
             Carbon::setTestNow();
         }
     }
 
-    public function test_weight_must_be_greater_than_zero(): void
+    public function test_garments_count_must_be_greater_than_zero(): void
     {
         $student = User::factory()->create();
         $washer = Washer::factory()->create(['status' => 'available']);
@@ -150,9 +150,9 @@ class ReservationRulesTest extends TestCase
             'washing_machine_id' => $washer->id,
             'reservation_date' => now()->addDay()->toDateString(),
             'reservation_time' => '12:00',
-            'weight_kg' => 0,
+            'garments_count' => 0,
             '_token' => 'test-token',
-        ])->assertSessionHasErrors('weight_kg');
+        ])->assertSessionHasErrors('garments_count');
     }
 
     public function test_student_can_cancel_only_own_pending_reservation(): void
@@ -183,6 +183,27 @@ class ReservationRulesTest extends TestCase
         $this->actingAs($student)->withSession(['_token' => 'test-token'])->patch('/student/reservations/'.$cancelled->id.'/cancel', ['_token' => 'test-token'])->assertForbidden();
     }
 
+
+    public function test_student_cannot_cancel_pending_reservation_after_start_time(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2026-09-14 10:30:00'));
+        $student = User::factory()->create();
+        $reservation = Reservation::factory()->create([
+            'user_id' => $student->id,
+            'reservation_date' => '2026-09-14',
+            'reservation_time' => '10:00',
+            'status' => 'pending',
+        ]);
+
+        try {
+            $this->actingAs($student)
+                ->withSession(['_token' => 'test-token'])
+                ->patch('/student/reservations/'.$reservation->id.'/cancel', ['_token' => 'test-token'])
+                ->assertForbidden();
+        } finally {
+            Carbon::setTestNow();
+        }
+    }
     public function test_staff_can_advance_pending_and_in_progress(): void
     {
         $pending = Reservation::factory()->create(['status' => 'pending']);
@@ -235,7 +256,7 @@ class ReservationRulesTest extends TestCase
             'washing_machine_id' => $washer->id,
             'reservation_date' => now()->addDay()->toDateString(),
             'reservation_time' => '11:00',
-            'weight_kg' => 5,
+            'garments_count' => 5,
         ]);
     }
 }

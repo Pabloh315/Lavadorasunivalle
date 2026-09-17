@@ -19,7 +19,7 @@ class StoreReservationRequest extends FormRequest
             'washing_machine_id' => ['required', 'exists:washing_machines,id'],
             'reservation_date' => ['required', 'date'],
             'reservation_time' => ['required', Rule::in(Reservation::HOURS)],
-            'weight_kg' => ['required', 'numeric', 'min:0.1', 'max:30'],
+            'garments_count' => ['required', 'integer', 'min:1', 'max:200'],
             'notes' => ['nullable', 'string', 'max:500'],
         ];
     }

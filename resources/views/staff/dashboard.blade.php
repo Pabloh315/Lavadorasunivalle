@@ -1,4 +1,4 @@
-<x-app-layout title="Dashboard personal - QuikWash">
+<x-app-layout title="Dashboard personal - QuickWash Campus">
     <div class="mb-8"><h1 class="text-3xl font-black">Panel del personal</h1><p class="text-slate-600">Seguimiento operativo de reservas y lavadoras.</p></div>
     <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div class="stat"><span>Reservas de hoy</span><strong>{{ $todayCount }}</strong></div>

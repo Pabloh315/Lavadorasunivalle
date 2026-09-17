@@ -1,8 +1,8 @@
-﻿<x-app-layout :title="$guard === 'staff' ? 'Login personal - QuikWash' : 'Login - QuikWash'">
+<x-app-layout :title="$guard === 'staff' ? 'Login personal - QuickWash Campus' : 'Login - QuickWash Campus'">
     <section class="mx-auto grid max-w-5xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm md:grid-cols-2">
         <div class="bg-cyan-700 p-8 text-white md:p-10">
             <div class="mb-12 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-white text-lg font-black text-cyan-700">QW</div>
-            <h1 class="text-3xl font-black tracking-normal">QuikWash</h1>
+            <h1 class="text-3xl font-black tracking-normal">QuickWash Campus</h1>
             <p class="mt-3 text-lg text-cyan-50">Lava fácil. Reserva rápido.</p>
             <p class="mt-8 max-w-sm text-sm leading-6 text-cyan-50">Reserva lavadoras por horario, revisa el estado de tus lavados y administra la operacion universitaria desde una sola pantalla.</p>
         </div>
